@@ -5,14 +5,14 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="2021-11-04-1-15" author="Artamonov Alexey">
+    <changeSet id="2021-11-04-01-15" author="Artamonov Alexey">
         <createTable tableName="WM_COMPANIES">
 
             <column name="OUID" type="bigserial">
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="A_NAME" type="varchar">
+            <column name="A_NAME" type="character varying">
                 <constraints nullable="false"/>
             </column>
 

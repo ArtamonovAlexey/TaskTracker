@@ -1,14 +1,17 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-        version="2.1">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <tlib-version>1.0</tlib-version>
-    <short-name>myshortname</short-name>
-    <uri>http://mycompany.com</uri>
-
-    <!-- Invoke 'Generate' action to add tags or functions -->
-
-</taglib>
+    <include file="db.migration/2021-11-04/create-wm_developments-table.xml"/>
+    <include file="db.migration/2021-11-04/create-wm_history_of_projects_changes-table.xml"/>
+    <include file="db.migration/2021-11-04/create-wm_people-table.xml"/>
+    <include file="db.migration/2021-11-04/create-wm_projects-table.xml"/>
+    <include file="db.migration/2021-11-04/create-wm_status-table.xml"/>
+    <include file="db.migration/2021-11-04/create-wm_tasks-table.xml"/>
+    <include file="db.migration/2021-11-04/create-wm_teams-table.xml"/>
+    <include file="db.migration/2021-11-04/create-wm_tracker-table.xml"/>
+    <include file="db.migration/2021-11-04/create-wm_companies-table.xml"/>
+</databaseChangeLog>

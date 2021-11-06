@@ -1,14 +1,28 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-        version="2.1">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <tlib-version>1.0</tlib-version>
-    <short-name>myshortname</short-name>
-    <uri>http://mycompany.com</uri>
+    <changeSet id="2021-11-04-01-50" author="Artamonov Alexey">
+        <createTable tableName="WM_PEOPLE">
+            <column name="OUID" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
 
-    <!-- Invoke 'Generate' action to add tags or functions -->
+            <column name="A_SURNAME" type="character varying">
+                <constraints nullable="false"/>
+            </column>
 
-</taglib>
+            <column name="A_FIRST_NAME" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="A_SECOND_NAME" type="character varying">
+                <constraints/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

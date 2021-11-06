@@ -1,14 +1,31 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
-<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-        version="2.1">
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <tlib-version>1.0</tlib-version>
-    <short-name>myshortname</short-name>
-    <uri>http://mycompany.com</uri>
+    <changeSet id="2021-11-04-02-05" author="Artamonov Alexey">
+        <createTable tableName="WM_TASKS">
 
-    <!-- Invoke 'Generate' action to add tags or functions -->
+            <column name="OUID" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
 
-</taglib>
+            <column name="A_NAME" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="A_DATE" type="character varying">
+                <constraints/>
+            </column>
+
+            <column name="A_STATUS" type="bigserial">
+<!--                <constraints foreignKeyName="WmStatus_that_WmTasks"-->
+                <constraints foreignKeyName="WM_STATUS"
+                             references="WM_STATUS(OUID)" nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
