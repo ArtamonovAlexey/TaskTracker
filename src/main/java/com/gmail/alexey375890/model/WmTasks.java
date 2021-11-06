@@ -21,4 +21,7 @@ public class WmTasks {
     @JoinColumn(name = "A_STATUS", referencedColumnName = "OUID", nullable = false)
     private WmStatus status;
 
+    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "A_DEVELOP", referencedColumnName = "OUID", nullable = false)
+    private WmDevelopments wmDevelopments;
 }

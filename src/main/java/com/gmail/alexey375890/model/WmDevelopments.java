@@ -1,7 +1,6 @@
 package com.gmail.alexey375890.model;
 
 import javax.persistence.*;
-import java.util.List;
 ///
 @Entity
 @Table(name = "WM_DEVELOPMENTS")
@@ -29,9 +28,9 @@ public class WmDevelopments {
     @Column(name = "END_DATE")
     private String endDate;
 
-    @OneToMany(cascade = {CascadeType.PERSIST})
-    @JoinColumn(name = "TASKS", referencedColumnName = "OUID", nullable = false)
-    private List<WmTasks> tasks;
+//    @OneToMany(cascade = {CascadeType.PERSIST})
+//    @JoinColumn(name = "TASKS", referencedColumnName = "OUID", nullable = false)
+//    private List<WmTasks> tasks;
 
     @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "A_STATUS", referencedColumnName = "OUID", nullable = false)

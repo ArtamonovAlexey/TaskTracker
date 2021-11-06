@@ -33,5 +33,4 @@ public class WmHistoryOfProjectsChanges {
     @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "A_RESPON_OF_CLIENT_COMPANY", referencedColumnName = "OUID", nullable = false)
     private WmPeople responOfClientCompany;
-
 }

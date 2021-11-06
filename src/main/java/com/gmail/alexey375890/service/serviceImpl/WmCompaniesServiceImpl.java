@@ -2,24 +2,24 @@ package com.gmail.alexey375890.service.serviceImpl;
 
 import com.gmail.alexey375890.model.WmCompanies;
 import com.gmail.alexey375890.repository.WmCompaniesRepository;
-import com.gmail.alexey375890.service.serviceInterface.WmCompaniesInterface;
+import com.gmail.alexey375890.service.serviceInterface.WmCompaniesService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class WmCompaniesImpl implements WmCompaniesInterface {
+public class WmCompaniesServiceImpl implements WmCompaniesService {
 
     private final WmCompaniesRepository wmCompaniesRepository;
 
-    public WmCompaniesImpl(WmCompaniesRepository wmCompaniesRepository) {
+    public WmCompaniesServiceImpl(WmCompaniesRepository wmCompaniesRepository) {
         this.wmCompaniesRepository = wmCompaniesRepository;
     }
 
     @Override
     public WmCompanies save(WmCompanies wmCompanies) {
-        wmCompaniesRepository.save(wmCompanies);
-        return wmCompanies;
+//        System.out.println(wmCompanies + "111");
+        return wmCompaniesRepository.save(wmCompanies);
     }
 
     @Override

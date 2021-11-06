@@ -16,7 +16,7 @@
             <column name="A_NAME" value="Backend-development"/>
         </insert>
 
-        <insert tableName="WM_STATUS">
+        <insert tableName="WM_TRACKERS">
             <column name="OUID" value="30"/>
             <column name="A_NAME" value="Frontend-rework"/>
         </insert>
@@ -26,7 +26,7 @@
             <column name="A_NAME" value="Frontend-development"/>
         </insert>
 
-        <insert tableName="WM_STATUS">
+        <insert tableName="WM_TRACKERS">
             <column name="OUID" value="50"/>
             <column name="A_NAME" value="QA"/>
         </insert>
