@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd" >
 
-<!--Creating tables-->
+<!--    Creating tables-->
     <include file="db.migration/create/v-1.0.0-cumulative.xml"/>
 
 <!--    Updating tables-->
