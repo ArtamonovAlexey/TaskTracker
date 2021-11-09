@@ -9,6 +9,4 @@ import java.util.Optional;
 @Repository
 public interface WmDevelopmentsRepository extends JpaRepository<WmDevelopments, Long> {
     Optional<WmDevelopments> findById(Long id);
-
-    WmDevelopments getById(Long id);
 }

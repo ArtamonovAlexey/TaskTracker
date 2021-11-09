@@ -24,4 +24,45 @@ public class WmTasks {
     @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "A_DEVELOP", referencedColumnName = "OUID", nullable = false)
     private WmDevelopments wmDevelopments;
+
+    public WmTasks(String name, WmStatus status, WmDevelopments wmDevelopments) {
+        this.name = name;
+        this.status = status;
+        this.wmDevelopments = wmDevelopments;
+    }
+
+    public WmTasks() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public WmStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(WmStatus status) {
+        this.status = status;
+    }
+
+    public WmDevelopments getWmDevelopments() {
+        return wmDevelopments;
+    }
+
+    public void setWmDevelopments(WmDevelopments wmDevelopments) {
+        this.wmDevelopments = wmDevelopments;
+    }
 }

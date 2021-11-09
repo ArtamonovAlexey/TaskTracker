@@ -28,12 +28,77 @@ public class WmDevelopments {
     @Column(name = "END_DATE")
     private String endDate;
 
-//    @OneToMany(cascade = {CascadeType.PERSIST})
-//    @JoinColumn(name = "TASKS", referencedColumnName = "OUID", nullable = false)
-//    private List<WmTasks> tasks;
-
     @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "A_STATUS", referencedColumnName = "OUID", nullable = false)
     private WmStatus status;
 
+    public WmDevelopments(WmTracker tracker, String startDate, WmStatus status) {
+        this.tracker = tracker;
+        this.startDate = startDate;
+        this.status = status;
+    }
+
+    public WmDevelopments() {
+    }
+
+    public WmPeople getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(WmPeople updated) {
+        this.updated = updated;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public WmTracker getTracker() {
+        return tracker;
+    }
+
+    public void setTracker(WmTracker tracker) {
+        this.tracker = tracker;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public WmStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(WmStatus status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "WmDevelopments{" +
+                "id=" + id +
+                ", updated=" + updated +
+                ", updateTime='" + updateTime + '\'' +
+                ", tracker=" + tracker +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

@@ -18,19 +18,19 @@ public class WmCompaniesServiceImpl implements WmCompaniesService {
 
     @Override
     public WmCompanies save(WmCompanies wmCompanies) {
-//        System.out.println(wmCompanies + "111");
-        return wmCompaniesRepository.save(wmCompanies);
+        return wmCompaniesRepository.saveAndFlush(wmCompanies);
     }
 
     @Override
-    public boolean updateNameOfCompany(String newName, Long id) {
+    public void updateNameOfCompany(Long id, String newName) {
+        WmCompanies wmCompanies = wmCompaniesRepository.getById(id);
+        wmCompanies.setName(newName);
 
-        return true;
+        wmCompaniesRepository.saveAndFlush(wmCompanies);
     }
 
     @Override
-    public boolean deleteCompany(Long id) {
-
-        return true;
+    public void delete(Long id) {
+        wmCompaniesRepository.deleteById(id);
     }
 }

@@ -25,4 +25,55 @@ public class WmTeams {
     @Column(name = "END_DATE")
     private String endDate;
 
+    public WmTeams(WmPeople person, WmDevelopments team, String startDate) {
+        this.person = person;
+        this.team = team;
+        this.startDate = startDate;
+    }
+
+    public WmTeams() {
+    }
+
+    public WmPeople getPerson() {
+        return person;
+    }
+
+    public void setPerson(WmPeople person) {
+        this.person = person;
+    }
+
+    public WmDevelopments getTeam() {
+        return team;
+    }
+
+    public void setTeam(WmDevelopments team) {
+        this.team = team;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "WmTeams{" +
+                "id=" + id +
+                ", person=" + person +
+                ", team=" + team +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                '}';
+    }
 }

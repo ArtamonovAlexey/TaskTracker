@@ -5,7 +5,7 @@ import com.gmail.alexey375890.model.WmCompanies;
 public interface WmCompaniesService {
     WmCompanies save(WmCompanies wmCompanies);
 
-    boolean updateNameOfCompany(String newName, Long id);
+    void updateNameOfCompany(Long id,String newName);
 
-    boolean deleteCompany(Long id);
+    void delete(Long id);
 }

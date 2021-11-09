@@ -1,6 +1,5 @@
 package com.gmail.alexey375890.controller;
 
-import com.gmail.alexey375890.model.WmCompanies;
 import com.gmail.alexey375890.service.serviceImpl.WmCompaniesServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +18,7 @@ public class WmCompaniesController {
 
     @GetMapping("/")
     public void get() {
-        WmCompanies wmCompanies = new WmCompanies(2l, "Basis");
-//        System.out.println(wmCompanies);
-        System.out.println(wmCompaniesServiceImpl.save(wmCompanies));
+//        WmCompanies wmCompanies = new WmCompanies(2l, "Basis");
+//        System.out.println(wmCompaniesServiceImpl.save(wmCompanies));
     }
 }
