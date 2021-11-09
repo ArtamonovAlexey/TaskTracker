@@ -20,7 +20,6 @@ public class WmCompanies {
     }
 
     public WmCompanies() {
-
     }
 
     public String getName() {
