@@ -3,14 +3,14 @@ package com.gmail.alexey375890.dto;
 import com.gmail.alexey375890.model.WmDevelopments;
 import com.gmail.alexey375890.model.WmPeople;
 
-public class WmTeamsTeamsDTO {
+public class WmTeamsDTO {
     private WmPeople person;
 
     private WmDevelopments team;
 
     private String startDate;
 
-    public WmTeamsTeamsDTO(WmPeople person, WmDevelopments team, String startDate) {
+    public WmTeamsDTO(WmPeople person, WmDevelopments team, String startDate) {
         this.person = person;
         this.team = team;
         this.startDate = startDate;

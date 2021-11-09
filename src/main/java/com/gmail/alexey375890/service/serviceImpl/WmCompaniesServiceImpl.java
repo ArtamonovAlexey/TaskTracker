@@ -22,11 +22,16 @@ public class WmCompaniesServiceImpl implements WmCompaniesService {
     }
 
     @Override
-    public void updateNameOfCompany(Long id, String newName) {
+    public WmCompanies get(Long id) {
+        return wmCompaniesRepository.getById(id);
+    }
+
+    @Override
+    public WmCompanies updateNameOfCompany(Long id, String newName) {
         WmCompanies wmCompanies = wmCompaniesRepository.getById(id);
         wmCompanies.setName(newName);
 
-        wmCompaniesRepository.saveAndFlush(wmCompanies);
+        return wmCompaniesRepository.saveAndFlush(wmCompanies);
     }
 
     @Override

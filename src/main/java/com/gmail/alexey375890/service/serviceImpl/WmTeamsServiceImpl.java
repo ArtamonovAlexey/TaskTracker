@@ -1,5 +1,7 @@
 package com.gmail.alexey375890.service.serviceImpl;
 
+import com.gmail.alexey375890.dto.WmTeamsDTO;
+import com.gmail.alexey375890.mapper.WmTeamsMapper;
 import com.gmail.alexey375890.model.WmDevelopments;
 import com.gmail.alexey375890.model.WmPeople;
 import com.gmail.alexey375890.model.WmTeams;
@@ -13,47 +15,55 @@ import org.springframework.transaction.annotation.Transactional;
 public class WmTeamsServiceImpl implements WmTeamsService {
     private final WmTeamsRepository wmTeamsRepository;
 
-    public WmTeamsServiceImpl(WmTeamsRepository wmTeamsRepository) {
+    private final WmTeamsMapper wmTeamsMapper;
+
+    public WmTeamsServiceImpl(WmTeamsRepository wmTeamsRepository, WmTeamsMapper wmTeamsMapper) {
         this.wmTeamsRepository = wmTeamsRepository;
+        this.wmTeamsMapper = wmTeamsMapper;
     }
 
     @Override
-    public WmTeams save(WmTeams wmTeams) {
-        wmTeams = wmTeamsRepository.saveAndFlush(wmTeams);
+    public WmTeams save(WmTeamsDTO wmTeamsDTO) {
+        WmTeams wmTeams = wmTeamsMapper.fromWmTeamsDTO(wmTeamsDTO);
 
-        return wmTeams;
+        return wmTeamsRepository.saveAndFlush(wmTeams);
     }
 
     @Override
-    public void updatePerson(Long id, WmPeople newPerson) {
+    public WmTeams get(Long id) {
+        return wmTeamsRepository.getById(id);
+    }
+
+    @Override
+    public WmTeams updatePerson(Long id, WmPeople newPerson) {
         WmTeams wmTeams = wmTeamsRepository.getById(id);
         wmTeams.setPerson(newPerson);
 
-        wmTeamsRepository.saveAndFlush(wmTeams);
+        return wmTeamsRepository.saveAndFlush(wmTeams);
     }
 
     @Override
-    public void updateTeam(Long id, WmDevelopments newDevelopment) {
+    public WmTeams updateTeam(Long id, WmDevelopments newDevelopment) {
         WmTeams wmTeams = wmTeamsRepository.getById(id);
         wmTeams.setTeam(newDevelopment);
 
-        wmTeamsRepository.saveAndFlush(wmTeams);
+        return wmTeamsRepository.saveAndFlush(wmTeams);
     }
 
     @Override
-    public void updateStartDate(Long id, String newStartDate) {
+    public WmTeams updateStartDate(Long id, String newStartDate) {
         WmTeams wmTeams = wmTeamsRepository.getById(id);
         wmTeams.setStartDate(newStartDate);
 
-        wmTeamsRepository.saveAndFlush(wmTeams);
+        return wmTeamsRepository.saveAndFlush(wmTeams);
     }
 
     @Override
-    public void updateEndDate(Long id, String newEndDate) {
+    public WmTeams updateEndDate(Long id, String newEndDate) {
         WmTeams wmTeams = wmTeamsRepository.getById(id);
         wmTeams.setEndDate(newEndDate);
 
-        wmTeamsRepository.saveAndFlush(wmTeams);
+        return wmTeamsRepository.saveAndFlush(wmTeams);
     }
 
     @Override

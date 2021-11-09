@@ -1,19 +1,22 @@
 package com.gmail.alexey375890.service.serviceInterface;
 
+import com.gmail.alexey375890.dto.WmTeamsDTO;
 import com.gmail.alexey375890.model.WmDevelopments;
 import com.gmail.alexey375890.model.WmPeople;
 import com.gmail.alexey375890.model.WmTeams;
 
 public interface WmTeamsService {
-    WmTeams save(WmTeams wmTeams);
+    WmTeams save(WmTeamsDTO team);
 
-    void updatePerson(Long id, WmPeople wmPeople);
+    WmTeams get(Long id);
 
-    void updateTeam(Long id, WmDevelopments wmDevelopments);
+    WmTeams updatePerson(Long id, WmPeople newPerson);
 
-    void updateStartDate(Long id, String startDate);
+    WmTeams updateTeam(Long id, WmDevelopments newDevelop);
 
-    void updateEndDate(Long id, String endDate);
+    WmTeams updateStartDate(Long id, String newStartDate);
+
+    WmTeams updateEndDate(Long id, String newEndDate);
 
     void delete(Long id);
 }

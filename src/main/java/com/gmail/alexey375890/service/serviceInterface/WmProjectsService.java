@@ -5,13 +5,15 @@ import com.gmail.alexey375890.model.WmPeople;
 import com.gmail.alexey375890.model.WmProjects;
 
 public interface WmProjectsService {
-    WmProjects save(WmProjects wmProjects);
+    WmProjects save(WmProjects project);
 
-    void updateTitle(Long id, String newTitle);
+    WmProjects get(Long id);
 
-    void updateAuthor(Long id, WmPeople wmPeople);
+    WmProjects updateTitle(Long id, String newTitle);
 
-    void updateCompany(Long id, WmCompanies wmCompanies);
+    WmProjects updateAuthor(Long id, WmPeople newAuthor);
+
+    WmProjects updateCompany(Long id, WmCompanies newCompany);
 
     void delete(Long id);
 }

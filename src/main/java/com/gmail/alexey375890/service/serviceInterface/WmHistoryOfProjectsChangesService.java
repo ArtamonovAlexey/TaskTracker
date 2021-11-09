@@ -1,5 +1,6 @@
 package com.gmail.alexey375890.service.serviceInterface;
 
+import com.gmail.alexey375890.dto.WmHistoryOfProjectsChangesDTO;
 import com.gmail.alexey375890.model.WmDevelopments;
 import com.gmail.alexey375890.model.WmHistoryOfProjectsChanges;
 import com.gmail.alexey375890.model.WmPeople;
@@ -8,19 +9,21 @@ import com.gmail.alexey375890.model.WmProjects;
 import java.util.List;
 
 public interface WmHistoryOfProjectsChangesService {
-    WmHistoryOfProjectsChanges save(WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges);
+    WmHistoryOfProjectsChanges save(WmHistoryOfProjectsChangesDTO HistoryOfProjectChanges);
 
-    void updateNumber(Long id, WmProjects wmProjects);
+    WmHistoryOfProjectsChanges get(Long id);
 
-    void updateDevelop(Long id, List<WmDevelopments> wmDevelopments);
+    WmHistoryOfProjectsChanges updateNumber(Long id, WmProjects newNumber);
 
-    void updateStartDate(Long id, String newStartDate);
+    WmHistoryOfProjectsChanges updateDevelop(Long id, List<WmDevelopments> newDevelop);
 
-    void updateEndDate(Long id, String endDate);
+    WmHistoryOfProjectsChanges updateStartDate(Long id, String newStartDate);
 
-    void updateResponCompany(Long id, WmPeople wmPeople);
+    WmHistoryOfProjectsChanges updateEndDate(Long id, String newEndDate);
 
-    void updateResponOfClientCompany(Long id, WmPeople wmPeople);
+    WmHistoryOfProjectsChanges updateResponCompany(Long id, WmPeople newResponCompany);
+
+    WmHistoryOfProjectsChanges updateResponOfClientCompany(Long id, WmPeople newResponOfClientCompany);
 
     void delete(Long id);
 }

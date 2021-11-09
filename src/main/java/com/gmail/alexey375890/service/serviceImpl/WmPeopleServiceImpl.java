@@ -17,33 +17,36 @@ public class WmPeopleServiceImpl implements WmPeopleService {
 
     @Override
     public WmPeople save(WmPeople wmPeople) {
-        wmPeople = wmPeopleRepository.saveAndFlush(wmPeople);
-
-        return wmPeople;
+        return wmPeopleRepository.saveAndFlush(wmPeople);
     }
 
     @Override
-    public void updateSurname(Long id, String newSurname) {
+    public WmPeople get(Long id) {
+        return wmPeopleRepository.getById(id);
+    }
+
+    @Override
+    public WmPeople updateSurname(Long id, String newSurname) {
         WmPeople wmPeople = wmPeopleRepository.getById(id);
         wmPeople.setSurname(newSurname);
 
-        wmPeopleRepository.saveAndFlush(wmPeople);
+        return wmPeopleRepository.saveAndFlush(wmPeople);
     }
 
     @Override
-    public void updateFirstName(Long id, String newFirstName) {
+    public WmPeople updateFirstName(Long id, String newFirstName) {
         WmPeople wmPeople = wmPeopleRepository.getById(id);
         wmPeople.setFirstName(newFirstName);
 
-        wmPeopleRepository.saveAndFlush(wmPeople);
+        return wmPeopleRepository.saveAndFlush(wmPeople);
     }
 
     @Override
-    public void updateSecondName(Long id, String newSecondName) {
+    public WmPeople updateSecondName(Long id, String newSecondName) {
         WmPeople wmPeople = wmPeopleRepository.getById(id);
         wmPeople.setSecondName(newSecondName);
 
-        wmPeopleRepository.saveAndFlush(wmPeople);
+        return wmPeopleRepository.saveAndFlush(wmPeople);
     }
 
     @Override

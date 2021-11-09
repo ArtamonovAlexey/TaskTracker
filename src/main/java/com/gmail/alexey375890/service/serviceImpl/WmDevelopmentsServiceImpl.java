@@ -1,5 +1,7 @@
 package com.gmail.alexey375890.service.serviceImpl;
 
+import com.gmail.alexey375890.dto.WmDevelopmentsDTO;
+import com.gmail.alexey375890.mapper.WmDevelopmentsMapper;
 import com.gmail.alexey375890.model.WmDevelopments;
 import com.gmail.alexey375890.model.WmPeople;
 import com.gmail.alexey375890.model.WmStatus;
@@ -15,63 +17,72 @@ public class WmDevelopmentsServiceImpl implements WmDevelopmentsService {
 
     private final WmDevelopmentsRepository wmDevelopmentsRepository;
 
-    public WmDevelopmentsServiceImpl(WmDevelopmentsRepository wmDevelopmentsRepository) {
+    private final WmDevelopmentsMapper wmDevelopmentsMapper;
+    public WmDevelopmentsServiceImpl(WmDevelopmentsRepository wmDevelopmentsRepository,
+                                     WmDevelopmentsMapper wmDevelopmentsMapper) {
         this.wmDevelopmentsRepository = wmDevelopmentsRepository;
+        this.wmDevelopmentsMapper = wmDevelopmentsMapper;
     }
 
     @Override
-    public WmDevelopments save(WmDevelopments wmDevelopments) {
+    public WmDevelopments save(WmDevelopmentsDTO wmDevelopmentsDTO) {
+        WmDevelopments wmDevelopments = wmDevelopmentsMapper.fromWmDevelopmentsDTO(wmDevelopmentsDTO);
         wmDevelopments = wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
 
         return wmDevelopments;
     }
 
     @Override
-    public void updateUpdated(Long id, WmPeople newUpdated) {
+    public WmDevelopments get(Long id) {
+        return wmDevelopmentsRepository.getById(id);
+    }
+
+    @Override
+    public WmDevelopments updateUpdated(Long id, WmPeople newUpdated) {
         WmDevelopments wmDevelopments = wmDevelopmentsRepository.getById(id);
         wmDevelopments.setUpdated(newUpdated);
 
-        wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
+        return wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
     }
 
     @Override
-    public void updateUpdateTime(Long id, String newDate) {
+    public WmDevelopments updateUpdateTime(Long id, String newDate) {
         WmDevelopments wmDevelopments = wmDevelopmentsRepository.getById(id);
         wmDevelopments.setUpdateTime(newDate);
 
-        wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
+        return wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
     }
 
     @Override
-    public void updateTracker(Long id, WmTracker newTracker) {
+    public WmDevelopments updateTracker(Long id, WmTracker newTracker) {
         WmDevelopments wmDevelopments = wmDevelopmentsRepository.getById(id);
         wmDevelopments.setTracker(newTracker);
 
-        wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
+        return wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
     }
 
     @Override
-    public void updateStartTime(Long id, String newStartDate) {
+    public WmDevelopments updateStartDate(Long id, String newStartDate) {
         WmDevelopments wmDevelopments = wmDevelopmentsRepository.getById(id);
         wmDevelopments.setStartDate(newStartDate);
 
-        wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
+        return wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
     }
 
     @Override
-    public void updateEndDate(Long id, String newEndDate) {
+    public WmDevelopments updateEndDate(Long id, String newEndDate) {
         WmDevelopments wmDevelopments = wmDevelopmentsRepository.getById(id);
         wmDevelopments.setEndDate(newEndDate);
 
-        wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
+        return wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
     }
 
     @Override
-    public void updateStatus(Long id, WmStatus newStatus) {
+    public WmDevelopments updateStatus(Long id, WmStatus newStatus) {
         WmDevelopments wmDevelopments = wmDevelopmentsRepository.getById(id);
         wmDevelopments.setStatus(newStatus);
 
-        wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
+        return wmDevelopmentsRepository.saveAndFlush(wmDevelopments);
     }
 
     @Override

@@ -1,19 +1,22 @@
 package com.gmail.alexey375890.service.serviceInterface;
 
+import com.gmail.alexey375890.dto.WmTasksDTO;
 import com.gmail.alexey375890.model.WmDevelopments;
 import com.gmail.alexey375890.model.WmStatus;
 import com.gmail.alexey375890.model.WmTasks;
 
 public interface WmTasksService {
-    WmTasks save(WmTasks wmTasks);
+    WmTasks save(WmTasksDTO task);
 
-    void updateName(Long id, String newName);
+    WmTasks get(Long id);
 
-    void updateDate(Long id, String newDate);
+    WmTasks updateName(Long id, String newName);
 
-    void updateStatus(Long id, WmStatus wmStatus);
+    WmTasks updateDate(Long id, String newDate);
 
-    void updateDevelop(Long id, WmDevelopments wmDevelopments);
+    WmTasks updateStatus(Long id, WmStatus newStatus);
+
+    WmTasks updateDevelop(Long id, WmDevelopments newDevelopment);
 
     void delete(Long id);
 }

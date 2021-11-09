@@ -1,5 +1,7 @@
 package com.gmail.alexey375890.service.serviceImpl;
 
+import com.gmail.alexey375890.dto.WmHistoryOfProjectsChangesDTO;
+import com.gmail.alexey375890.mapper.WmHistoryOfProjectsChangesMapper;
 import com.gmail.alexey375890.model.WmDevelopments;
 import com.gmail.alexey375890.model.WmHistoryOfProjectsChanges;
 import com.gmail.alexey375890.model.WmPeople;
@@ -14,66 +16,73 @@ import java.util.List;
 @Service
 @Transactional
 public class WmHistoryOfProjectsChangesServiceImpl implements WmHistoryOfProjectsChangesService {
-
     private final WmHistoryOfProjectsChangesRepository wmHistoryOfProjectsChangesRepository;
 
-    public WmHistoryOfProjectsChangesServiceImpl(WmHistoryOfProjectsChangesRepository wmHistoryOfProjectsChangesRepository) {
+    private final WmHistoryOfProjectsChangesMapper wmHistoryOfProjectsChangesMapper;
+
+    public WmHistoryOfProjectsChangesServiceImpl(WmHistoryOfProjectsChangesRepository wmHistoryOfProjectsChangesRepository,
+                                                 WmHistoryOfProjectsChangesMapper wmHistoryOfProjectsChangesMapper) {
         this.wmHistoryOfProjectsChangesRepository = wmHistoryOfProjectsChangesRepository;
+        this.wmHistoryOfProjectsChangesMapper = wmHistoryOfProjectsChangesMapper;
     }
 
     @Override
-    public WmHistoryOfProjectsChanges save(WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges) {
-        wmHistoryOfProjectsChanges = wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
-
-        return wmHistoryOfProjectsChanges;
+    public WmHistoryOfProjectsChanges save(WmHistoryOfProjectsChangesDTO wmHistoryOfProjectsChangesDTO) {
+        WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges = wmHistoryOfProjectsChangesMapper.fromWmHistoryOfProjectsChangesDTO(wmHistoryOfProjectsChangesDTO);
+        return wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
     }
 
     @Override
-    public void updateNumber(Long id, WmProjects newProject) {
+    public WmHistoryOfProjectsChanges get(Long id) {
+        return wmHistoryOfProjectsChangesRepository.getById(id);
+    }
+
+    @Override
+    public WmHistoryOfProjectsChanges updateNumber(Long id, WmProjects newProject) {
         WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges = wmHistoryOfProjectsChangesRepository.getById(id);
         wmHistoryOfProjectsChanges.setNumber(newProject);
 
-        wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
+        return wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
     }
 
     @Override
-    public void updateDevelop(Long id, List<WmDevelopments> newDevelopment) {
+    public WmHistoryOfProjectsChanges updateDevelop(Long id, List<WmDevelopments> newDevelopment) {
         WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges = wmHistoryOfProjectsChangesRepository.getById(id);
         wmHistoryOfProjectsChanges.setDevelop( newDevelopment);
 
-        wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
+        return wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
     }
 
     @Override
-    public void updateStartDate(Long id, String newStartDate) {
+    public WmHistoryOfProjectsChanges updateStartDate(Long id, String newStartDate) {
         WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges = wmHistoryOfProjectsChangesRepository.getById(id);
         wmHistoryOfProjectsChanges.setStartDate(newStartDate);
 
-        wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
+        return wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
     }
 
     @Override
-    public void updateEndDate(Long id, String newEndDate) {
+    public WmHistoryOfProjectsChanges updateEndDate(Long id, String newEndDate) {
         WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges = wmHistoryOfProjectsChangesRepository.getById(id);
         wmHistoryOfProjectsChanges.setEndDate(newEndDate);
 
-        wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
+        return wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
     }
 
     @Override
-    public void updateResponCompany(Long id, WmPeople newResponCompany) {
+    public WmHistoryOfProjectsChanges updateResponCompany(Long id, WmPeople newResponCompany) {
         WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges = wmHistoryOfProjectsChangesRepository.getById(id);
         wmHistoryOfProjectsChanges.setResponCompany(newResponCompany);
 
-        wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
+        return wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
     }
 
     @Override
-    public void updateResponOfClientCompany(Long id, WmPeople newResponOfClientCompany) {
+    public WmHistoryOfProjectsChanges updateResponOfClientCompany(Long id, WmPeople newResponOfClientCompany) {
         WmHistoryOfProjectsChanges wmHistoryOfProjectsChanges = wmHistoryOfProjectsChangesRepository.getById(id);
         wmHistoryOfProjectsChanges.setResponOfClientCompany(newResponOfClientCompany);
 
-        wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
+        return wmHistoryOfProjectsChangesRepository.saveAndFlush(wmHistoryOfProjectsChanges);
     }
 
     @Override

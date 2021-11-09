@@ -3,13 +3,15 @@ package com.gmail.alexey375890.service.serviceInterface;
 import com.gmail.alexey375890.model.WmPeople;
 
 public interface WmPeopleService {
-    WmPeople save(WmPeople wmPeople);
+    WmPeople save(WmPeople person);
 
-    void updateSurname(Long id, String newSurname);
+    WmPeople get(Long id);
 
-    void updateFirstName(Long id, String newFirstName);
+    WmPeople updateSurname(Long id, String newSurname);
 
-    void updateSecondName(Long id, String newSecondName);
+    WmPeople updateFirstName(Long id, String newFirstName);
+
+    WmPeople updateSecondName(Long id, String newSecondName);
 
     void delete(Long id);
 }

@@ -1,24 +1,27 @@
 package com.gmail.alexey375890.service.serviceInterface;
 
+import com.gmail.alexey375890.dto.WmDevelopmentsDTO;
 import com.gmail.alexey375890.model.WmDevelopments;
 import com.gmail.alexey375890.model.WmPeople;
 import com.gmail.alexey375890.model.WmStatus;
 import com.gmail.alexey375890.model.WmTracker;
 
 public interface WmDevelopmentsService {
-    WmDevelopments save(WmDevelopments wmDevelopments);
+    WmDevelopments save(WmDevelopmentsDTO develop);
 
-    void updateUpdated(Long id, WmPeople wmPeople);
+    WmDevelopments get(Long id);
 
-    void updateUpdateTime(Long id, String date);
+    WmDevelopments updateUpdated(Long id, WmPeople newUpdated);
 
-    void updateTracker(Long id, WmTracker wmTracker);
+    WmDevelopments updateUpdateTime(Long id, String newDate);
 
-    void updateStartTime(Long id, String startDate);
+    WmDevelopments updateTracker(Long id, WmTracker newTracker);
 
-    void updateEndDate(Long id, String EndDate);
+    WmDevelopments updateStartDate(Long id, String newStartDate);
 
-    void updateStatus(Long id, WmStatus wmStatus);
+    WmDevelopments updateEndDate(Long id, String newEndDate);
+
+    WmDevelopments updateStatus(Long id, WmStatus newStatus);
 
     void delete(Long id);
 }

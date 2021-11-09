@@ -19,33 +19,36 @@ public class WmProjectsServiceImpl implements WmProjectsService {
 
     @Override
     public WmProjects save(WmProjects wmProjects) {
-        wmProjects = wmProjectsRepository.saveAndFlush(wmProjects);
-
-        return wmProjects;
+        return wmProjectsRepository.saveAndFlush(wmProjects);
     }
 
     @Override
-    public void updateTitle(Long id, String newTitle) {
+    public WmProjects get(Long id) {
+        return wmProjectsRepository.getById(id);
+    }
+
+    @Override
+    public WmProjects updateTitle(Long id, String newTitle) {
         WmProjects wmProjects = wmProjectsRepository.getById(id);
         wmProjects.setTitle(newTitle);
 
-        wmProjectsRepository.saveAndFlush(wmProjects);
+        return wmProjectsRepository.saveAndFlush(wmProjects);
     }
 
     @Override
-    public void updateAuthor(Long id, WmPeople newAuthor) {
+    public WmProjects updateAuthor(Long id, WmPeople newAuthor) {
         WmProjects wmProjects = wmProjectsRepository.getById(id);
         wmProjects.setAuthor(newAuthor);
 
-        wmProjectsRepository.saveAndFlush(wmProjects);
+        return wmProjectsRepository.saveAndFlush(wmProjects);
     }
 
     @Override
-    public void updateCompany(Long id, WmCompanies newCompany) {
+    public WmProjects updateCompany(Long id, WmCompanies newCompany) {
         WmProjects wmProjects = wmProjectsRepository.getById(id);
         wmProjects.setCompany(newCompany);
 
-        wmProjectsRepository.saveAndFlush(wmProjects);
+        return wmProjectsRepository.saveAndFlush(wmProjects);
     }
 
     @Override
