@@ -2,10 +2,12 @@ package com.gmail.alexey375890.controller;
 
 import com.gmail.alexey375890.model.WmCompanies;
 import com.gmail.alexey375890.service.serviceInterface.WmCompaniesService;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/task-tracker/companies")
+@Api("Controller for works with data of companies")
 public class WmCompaniesController {
     private final WmCompaniesService wmCompaniesService;
 
@@ -23,12 +25,12 @@ public class WmCompaniesController {
         return wmCompaniesService.get(id);
     }
 
-    @PostMapping("post-name-by-{id}")
+    @PostMapping("/post-name-by-{id}")
     public WmCompanies postNameById(@PathVariable Long id, @RequestBody String newName) {
         return wmCompaniesService.updateNameOfCompany(id, newName);
     }
 
-    @DeleteMapping("delete-by-{id}")
+    @DeleteMapping("/delete-by-{id}")
     public void deleteCompanyById(@PathVariable Long id) {
         wmCompaniesService.delete(id);
     }
