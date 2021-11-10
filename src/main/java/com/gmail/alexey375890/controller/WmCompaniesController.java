@@ -2,12 +2,13 @@ package com.gmail.alexey375890.controller;
 
 import com.gmail.alexey375890.model.WmCompanies;
 import com.gmail.alexey375890.service.serviceInterface.WmCompaniesService;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/task-tracker/companies")
-@Api("Controller for works with data of companies")
+//@Api("Controller for works with data of companies")
+@Tag(name = "", description = "")
 public class WmCompaniesController {
     private final WmCompaniesService wmCompaniesService;
 
