@@ -1,19 +1,24 @@
 package com.gmail.alexey375890.dto;
 
-import com.gmail.alexey375890.model.WmDevelopments;
-import com.gmail.alexey375890.model.WmStatus;
-
 public class WmTasksDTO {
+
+    private Long id;
+
     private String name;
 
-    private WmStatus status;
+    private Long developId;
 
-    private WmDevelopments develop;
-
-    public WmTasksDTO(String name, WmStatus status, WmDevelopments develop) {
+    public WmTasksDTO(Long id, String name, Long developId) {
+        this.id = id;
         this.name = name;
-        this.status = status;
-        this.develop = develop;
+        this.developId = developId;
+    }
+
+    public WmTasksDTO() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -24,28 +29,20 @@ public class WmTasksDTO {
         this.name = name;
     }
 
-    public WmStatus getStatus() {
-        return status;
+    public Long getDevelopId() {
+        return developId;
     }
 
-    public void setStatus(WmStatus status) {
-        this.status = status;
-    }
-
-    public WmDevelopments getDevelop() {
-        return develop;
-    }
-
-    public void setDevelop(WmDevelopments develop) {
-        this.develop = develop;
+    public void setDevelopId(Long developId) {
+        this.developId = developId;
     }
 
     @Override
     public String toString() {
         return "WmTasksDTO{" +
-                "name='" + name + '\'' +
-                ", status=" + status +
-                ", develop=" + develop +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", developId=" + developId +
                 '}';
     }
 }

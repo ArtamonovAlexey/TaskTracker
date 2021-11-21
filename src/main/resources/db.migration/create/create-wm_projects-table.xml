@@ -16,12 +16,12 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="AN_AUTHOR" type="bigserial">
+            <column name="AN_AUTHOR" type="bigint">
                 <constraints foreignKeyName="WM_PEOPLE"
                              references="WM_PEOPLE(OUID)" nullable="false"/>
             </column>
 
-            <column name="A_CLIENT_COMPANY" type="bigserial">
+            <column name="A_CLIENT_COMPANY" type="bigint">
                 <constraints foreignKeyName="WM_COMPANIES"
                              references="WM_COMPANIES(OUID)" nullable="false"/>
             </column>

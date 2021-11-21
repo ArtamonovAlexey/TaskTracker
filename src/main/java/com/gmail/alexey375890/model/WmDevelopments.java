@@ -12,6 +12,10 @@ public class WmDevelopments {
     private Long id;
 
     @ManyToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "A_PROJECT", referencedColumnName = "OUID")
+    private WmHistoryOfProjectsChanges project;
+
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "UPDATED", referencedColumnName = "OUID")
     private WmPeople updated;
 
@@ -19,10 +23,10 @@ public class WmDevelopments {
     private String updateTime;
 
     @ManyToOne(cascade = {CascadeType.PERSIST})
-    @JoinColumn(name = "A_TRACKER", referencedColumnName = "OUID", nullable = false)
+    @JoinColumn(name = "A_TRACKER", referencedColumnName = "OUID")
     private WmTracker tracker;
 
-    @Column(name = "START_DATE", nullable = false)
+    @Column(name = "START_DATE")
     private String startDate;
 
     @Column(name = "END_DATE")
@@ -32,13 +36,48 @@ public class WmDevelopments {
     @JoinColumn(name = "A_STATUS", referencedColumnName = "OUID", nullable = false)
     private WmStatus status;
 
-    public WmDevelopments(WmTracker tracker, String startDate, WmStatus status) {
+    public WmDevelopments(Long id, WmHistoryOfProjectsChanges project,
+                          WmPeople updated, String updateTime, WmTracker tracker,
+                          String startDate, String endDate, WmStatus status
+    ) {
+        this.id = id;
+        this.project = project;
+        this.updated = updated;
+        this.updateTime = updateTime;
         this.tracker = tracker;
         this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
+    }
+
+    public WmDevelopments(Long id, WmPeople updated, String updateTime, WmTracker tracker,
+                          String startDate, String endDate, WmStatus status) {
+        this.id = id;
+        this.updated = updated;
+        this.updateTime = updateTime;
+        this.tracker = tracker;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.status = status;
     }
 
     public WmDevelopments() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public WmHistoryOfProjectsChanges getProject() {
+        return project;
+    }
+
+    public void setProject(WmHistoryOfProjectsChanges project) {
+        this.project = project;
     }
 
     public WmPeople getUpdated() {
@@ -101,4 +140,5 @@ public class WmDevelopments {
                 ", status=" + status +
                 '}';
     }
+
 }

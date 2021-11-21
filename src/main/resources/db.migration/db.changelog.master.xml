@@ -10,5 +10,7 @@
 
 <!--    Updating tables-->
     <include file="db.migration/update/2021-11-06/v-1.0.1-cumulative.xml"/>
+    <include file="db.migration/update/2021-11-13/v-1.0.2-cumulative.xml"/>
+    <include file="db.migration/update/2021-11-16/v-1.0.3-cumulative.xml"/>
 
 </databaseChangeLog>

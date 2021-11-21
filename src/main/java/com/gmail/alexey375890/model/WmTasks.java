@@ -22,16 +22,22 @@ public class WmTasks {
     private WmStatus status;
 
     @ManyToOne(cascade = {CascadeType.PERSIST})
-    @JoinColumn(name = "A_DEVELOP", referencedColumnName = "OUID", nullable = false)
-    private WmDevelopments wmDevelopments;
+    @JoinColumn(name = "A_DEVELOP", referencedColumnName = "OUID")
+    private WmDevelopments develop;
 
-    public WmTasks(String name, WmStatus status, WmDevelopments wmDevelopments) {
+    public WmTasks(Long id, String name, String date, WmStatus status, WmDevelopments develop) {
+        this.id = id;
         this.name = name;
+        this.date = date;
         this.status = status;
-        this.wmDevelopments = wmDevelopments;
+        this.develop = develop;
     }
 
     public WmTasks() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -58,11 +64,22 @@ public class WmTasks {
         this.status = status;
     }
 
-    public WmDevelopments getWmDevelopments() {
-        return wmDevelopments;
+    public WmDevelopments getDevelop() {
+        return develop;
     }
 
-    public void setWmDevelopments(WmDevelopments wmDevelopments) {
-        this.wmDevelopments = wmDevelopments;
+    public void setDevelop(WmDevelopments develop) {
+        this.develop = develop;
+    }
+
+    @Override
+    public String toString() {
+        return "WmTasks{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                ", status=" + status +
+                ", wmDevelopments=" + develop +
+                '}';
     }
 }

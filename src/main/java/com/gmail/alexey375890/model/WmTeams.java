@@ -25,13 +25,24 @@ public class WmTeams {
     @Column(name = "END_DATE")
     private String endDate;
 
-    public WmTeams(WmPeople person, WmDevelopments team, String startDate) {
+    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "A_STATUS", referencedColumnName = "OUID", nullable = false)
+    private WmStatus status;
+
+    public WmTeams(Long id, WmPeople person, WmDevelopments team, String startDate, String endDate, WmStatus status) {
+        this.id = id;
         this.person = person;
         this.team = team;
         this.startDate = startDate;
+        this.endDate = endDate;
+        this.status = status;
     }
 
     public WmTeams() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public WmPeople getPerson() {
@@ -66,6 +77,14 @@ public class WmTeams {
         this.endDate = endDate;
     }
 
+    public WmStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(WmStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "WmTeams{" +
@@ -74,6 +93,7 @@ public class WmTeams {
                 ", team=" + team +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

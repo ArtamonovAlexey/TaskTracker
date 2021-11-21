@@ -1,35 +1,46 @@
 package com.gmail.alexey375890.dto;
 
-import com.gmail.alexey375890.model.WmDevelopments;
-import com.gmail.alexey375890.model.WmPeople;
-
 public class WmTeamsDTO {
-    private WmPeople person;
 
-    private WmDevelopments team;
+    private Long id;
+
+    private Long personId;
+
+    private Long teamId;
 
     private String startDate;
 
-    public WmTeamsDTO(WmPeople person, WmDevelopments team, String startDate) {
-        this.person = person;
-        this.team = team;
+    private String endDate;
+
+    public WmTeamsDTO(Long id, Long personId, Long teamId, String startDate, String endDate) {
+        this.id = id;
+        this.personId = personId;
+        this.teamId = teamId;
         this.startDate = startDate;
+        this.endDate = endDate;
     }
 
-    public WmPeople getPerson() {
-        return person;
+    public WmTeamsDTO() {
     }
 
-    public void setPerson(WmPeople person) {
-        this.person = person;
+    public Long getId() {
+        return id;
     }
 
-    public WmDevelopments getTeam() {
-        return team;
+    public Long getPersonId() {
+        return personId;
     }
 
-    public void setTeam(WmDevelopments team) {
-        this.team = team;
+    public void setPersonId(Long personId) {
+        this.personId = personId;
+    }
+
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
     }
 
     public String getStartDate() {
@@ -40,12 +51,22 @@ public class WmTeamsDTO {
         this.startDate = startDate;
     }
 
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
     @Override
     public String toString() {
-        return "WmTeamsTeamsDTO{" +
-                "person=" + person +
-                ", team=" + team +
+        return "WmTeamsDTO{" +
+                "id=" + id +
+                ", personId=" + personId +
+                ", teamId=" + teamId +
                 ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
                 '}';
     }
 }

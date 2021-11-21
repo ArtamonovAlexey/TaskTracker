@@ -12,7 +12,7 @@
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="A_NUMBER" type="bigserial">
+            <column name="A_NUMBER" type="bigint">
                 <constraints foreignKeyName="WM_PROJECTS"
                              references="WM_PROJECTS(OUID)" nullable="false"/>
             </column>
@@ -25,12 +25,12 @@
                 <constraints nullable="false"/>
             </column>
 
-            <column name="A_RESPON_COMPANY" type="bigserial">
+            <column name="A_RESPON_COMPANY" type="bigint">
                 <constraints foreignKeyName="WM_PEOPLE"
                              references="WM_PEOPLE(OUID)" nullable="false"/>
             </column>
 
-            <column name="A_RESPON_OF_CLIENT_COMPANY" type="bigserial">
+            <column name="A_RESPON_OF_CLIENT_COMPANY" type="bigint">
                 <constraints foreignKeyName="WM_PEOPLE" nullable="false"/>
             </column>
 

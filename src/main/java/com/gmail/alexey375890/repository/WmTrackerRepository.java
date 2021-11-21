@@ -10,4 +10,19 @@ public interface WmTrackerRepository extends JpaRepository<WmTracker, Long> {
 
     @Query("select wt from WmTracker wt where wt.id = :id")
     WmTracker getById(Long id);
+
+    @Query("select wt from WmTracker wt where wt.id = 10")
+    WmTracker getBackendRework();
+
+    @Query("select wt from WmTracker wt where wt.id = 20")
+    WmTracker getBackendDevelopment();
+
+    @Query("select wt from WmTracker wt where wt.id = 30")
+    WmTracker getFrontendRework();
+
+    @Query("select wt from WmTracker wt where wt.id = 40")
+    WmTracker getFrontendDevelopment();
+
+    @Query("select wt from WmTracker wt where wt.id = 50")
+    WmTracker getQa();
 }

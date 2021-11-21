@@ -1,45 +1,42 @@
 package com.gmail.alexey375890.dto;
 
-import com.gmail.alexey375890.model.WmDevelopments;
-import com.gmail.alexey375890.model.WmPeople;
-import com.gmail.alexey375890.model.WmProjects;
-
-import java.util.List;
-
 public class WmHistoryOfProjectsChangesDTO {
-    private WmProjects number;
 
-    private List<WmDevelopments> develop;
+    private Long id;
+
+    private Long projectId;
 
     private String startDate;
 
-    private WmPeople responCompany;
+    private String endDate;
 
-    private WmPeople responOfClientCompany;
+    private Long responCompanyId;
 
-    public WmHistoryOfProjectsChangesDTO(WmProjects number, List<WmDevelopments> develop, String startDate,
-                                         WmPeople responCompany, WmPeople responOfClientCompany) {
-        this.number = number;
-        this.develop = develop;
+    private Long responOfClientCompanyId;
+
+    public WmHistoryOfProjectsChangesDTO(Long id, Long projectId, String startDate,
+                                         String endDate, Long responCompanyId, Long responOfClientCompanyId) {
+        this.id = id;
+        this.projectId = projectId;
         this.startDate = startDate;
-        this.responCompany = responCompany;
-        this.responOfClientCompany = responOfClientCompany;
+        this.endDate = endDate;
+        this.responCompanyId = responCompanyId;
+        this.responOfClientCompanyId = responOfClientCompanyId;
     }
 
-    public WmProjects getNumber() {
-        return number;
+    public WmHistoryOfProjectsChangesDTO() {
     }
 
-    public void setNumber(WmProjects number) {
-        this.number = number;
+    public Long getId() {
+        return id;
     }
 
-    public List<WmDevelopments> getDevelop() {
-        return develop;
+    public Long getProjectId() {
+        return projectId;
     }
 
-    public void setDevelop(List<WmDevelopments> develop) {
-        this.develop = develop;
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
     }
 
     public String getStartDate() {
@@ -50,30 +47,39 @@ public class WmHistoryOfProjectsChangesDTO {
         this.startDate = startDate;
     }
 
-    public WmPeople getResponCompany() {
-        return responCompany;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setResponCompany(WmPeople responCompany) {
-        this.responCompany = responCompany;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
-    public WmPeople getResponOfClientCompany() {
-        return responOfClientCompany;
+    public Long getResponCompanyId() {
+        return responCompanyId;
     }
 
-    public void setResponOfClientCompany(WmPeople responOfClientCompany) {
-        this.responOfClientCompany = responOfClientCompany;
+    public void setResponCompanyId(Long responCompanyId) {
+        this.responCompanyId = responCompanyId;
+    }
+
+    public Long getResponOfClientCompanyId() {
+        return responOfClientCompanyId;
+    }
+
+    public void setResponOfClientCompanyId(Long responOfClientCompanyId) {
+        this.responOfClientCompanyId = responOfClientCompanyId;
     }
 
     @Override
     public String toString() {
         return "WmHistoryOfProjectsChangesDTO{" +
-                ", number=" + number +
-                ", develop=" + develop +
+                "id=" + id +
+                ", projectId=" + projectId +
                 ", startDate='" + startDate + '\'' +
-                ", responCompany=" + responCompany +
-                ", responOfClientCompany=" + responOfClientCompany +
+                ", endDate='" + endDate + '\'' +
+                ", responCompanyId=" + responCompanyId +
+                ", responOfClientCompanyId=" + responOfClientCompanyId +
                 '}';
     }
 }

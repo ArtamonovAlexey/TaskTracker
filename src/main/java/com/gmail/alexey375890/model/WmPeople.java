@@ -20,12 +20,23 @@ public class WmPeople {
     @Column(name = "A_SECOND_NAME")
     private String secondName;
 
-    public WmPeople(String surname, String firstName) {
+    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "A_STATUS", referencedColumnName = "OUID", nullable = false)
+    private WmStatus status;
+
+    public WmPeople(Long id, String surname, String firstName, String secondName, WmStatus status) {
+        this.id = id;
         this.surname = surname;
         this.firstName = firstName;
+        this.secondName = secondName;
+        this.status = status;
     }
 
     public WmPeople() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getSurname() {
@@ -50,5 +61,24 @@ public class WmPeople {
 
     public void setSecondName(String secondName) {
         this.secondName = secondName;
+    }
+
+    public WmStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(WmStatus status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "WmPeople{" +
+                "id=" + id +
+                ", surname='" + surname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

@@ -10,4 +10,7 @@ public interface WmTasksRepository extends JpaRepository<WmTasks, Long> {
 
     @Query("select wt from WmTasks wt where wt.id = :id")
     WmTasks getById(Long id);
+
+//    @Query("select wt from WmTasks wt order by wt.name desc")
+//    List<WmTasks> find();
 }

@@ -1,27 +1,50 @@
 package com.gmail.alexey375890.dto;
 
-import com.gmail.alexey375890.model.WmStatus;
-import com.gmail.alexey375890.model.WmTracker;
-
 public class WmDevelopmentsDTO {
-    private WmTracker tracker;
+
+    private Long id;
+
+    private Long projectId;
+
+    private Long trackerId;
 
     private String startDate;
 
-    private WmStatus status;
+    private String endDate;
 
-    public WmDevelopmentsDTO(WmTracker tracker, String startDate, WmStatus status) {
-        this.tracker = tracker;
+    public WmDevelopmentsDTO(Long id, Long projectId, Long trackerId, String startDate, String endDate) {
+        this.id = id;
+        this.projectId = projectId;
+        this.trackerId = trackerId;
         this.startDate = startDate;
-        this.status = status;
+        this.endDate = endDate;
     }
 
-    public WmTracker getTracker() {
-        return tracker;
+    public WmDevelopmentsDTO() {
     }
 
-    public void setTracker(WmTracker tracker) {
-        this.tracker = tracker;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Long projectId) {
+        this.projectId = projectId;
+    }
+
+    public Long getTrackerId() {
+        return trackerId;
+    }
+
+    public void setTrackerId(Long trackerId) {
+        this.trackerId = trackerId;
     }
 
     public String getStartDate() {
@@ -32,20 +55,22 @@ public class WmDevelopmentsDTO {
         this.startDate = startDate;
     }
 
-    public WmStatus getStatus() {
-        return status;
+    public String getEndDate() {
+        return endDate;
     }
 
-    public void setStatus(WmStatus status) {
-        this.status = status;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
     @Override
     public String toString() {
-        return "WmDevelopmentsDto{" +
-                ", tracker=" + tracker +
+        return "WmDevelopmentsDTO{" +
+                "id=" + id +
+                ", tracker=" + trackerId +
                 ", startDate='" + startDate + '\'' +
-                ", status=" + status +
+                ", endDate='" + endDate + '\'' +
                 '}';
     }
+
 }

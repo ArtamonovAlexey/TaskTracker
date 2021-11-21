@@ -10,4 +10,19 @@ public interface WmStatusRepository extends JpaRepository<WmStatus, Long> {
 
     @Query("select ws from WmStatus ws where ws.id = :id")
     WmStatus getById(Long id);
+
+    @Query("select ws from WmStatus ws where ws.id = 10")
+    WmStatus getDone();
+
+    @Query("select ws from WmStatus ws where ws.id = 20")
+    WmStatus getInProgress();
+
+    @Query("select ws from WmStatus ws where ws.id = 30")
+    WmStatus getBacklog();
+
+    @Query("select ws from WmStatus ws where ws.id = 110")
+    WmStatus getActive();
+
+    @Query("select ws from WmStatus ws where ws.id = 120")
+    WmStatus getNotActive();
 }

@@ -20,7 +20,7 @@
                 <constraints/>
             </column>
 
-            <column name="A_STATUS" type="bigserial">
+            <column name="A_STATUS" type="bigint">
 <!--                <constraints foreignKeyName="WmStatus_that_WmTasks"-->
                 <constraints foreignKeyName="WM_STATUS"
                              references="WM_STATUS(OUID)" nullable="false"/>

@@ -32,7 +32,7 @@ public class SwaggerConfig {
                 "This is API for task control",
                 "1.0.0",
                 "not Free to use",
-                new Contact("Alexey Artamonov", "https://vk.com/skbdishka", "alexey37580@gamil.com"),
+                new Contact("Alexey Artamonov", "https://vk.com/javaboss", "alexey37580@gamil.com"),
                 "SimbirSoft License",
                 "https://www.simbirsoft.com",
                 Collections.emptyList()

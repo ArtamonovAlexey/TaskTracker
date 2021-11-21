@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2021-11-13-15-52" author="Artamonov Alexey">
+        <insert tableName="WM_STATUS">
+            <column name="OUID" value="110"/>
+            <column name="A_NAME" value="ACTIVE"/>
+        </insert>
+
+        <insert tableName="WM_STATUS">
+            <column name="OUID" value="120"/>
+            <column name="A_NAME" value="NOT ACTIVE"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

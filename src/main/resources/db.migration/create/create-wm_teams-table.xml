@@ -12,12 +12,12 @@
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="A_PERSON" type="bigserial">
+            <column name="A_PERSON" type="bigint">
                 <constraints foreignKeyName="WM_PEOPLE"
                              references="WM_PEOPLE(OUID)" nullable="false"/>
             </column>
 
-            <column name="A_TEAM" type="bigserial">
+            <column name="A_TEAM" type="bigint">
                 <constraints foreignKeyName="WM_DEVELOPMENTS"
                              references="WM_DEVELOPMENTS(OUID)" nullable="false"/>
             </column>

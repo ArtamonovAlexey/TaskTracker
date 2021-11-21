@@ -12,7 +12,7 @@
                 <constraints primaryKey="true"/>
             </column>
 
-            <column name="UPDATED" type="bigserial">
+            <column name="UPDATED" type="bigint">
                 <constraints foreignKeyName="WM_PEOPLE" references="WM_PEOPLE(OUID)"/>
             </column>
 
@@ -20,8 +20,8 @@
                 <constraints/>
             </column>
 
-            <column name="A_TRACKER" type="bigserial">
-                <constraints foreignKeyName="WM_TRACKERS" references="WM_TRACKERS(OUID)" nullable="false"/>
+            <column name="A_TRACKER" type="bigint">
+                <constraints foreignKeyName="WM_TRACKER" references="WM_TRACKER(OUID)" nullable="false"/>
             </column>
 
             <column name="START_DATE" type="character varying">
@@ -32,7 +32,7 @@
                 <constraints/>
             </column>
 
-            <column name="A_STATUS" type="bigserial">
+            <column name="A_STATUS" type="bigint">
                 <constraints foreignKeyName="WM_STATUS" references="WM_STATUS(OUID)" nullable="false"/>
             </column>
 

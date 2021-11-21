@@ -7,7 +7,7 @@
 
 <!--    Updating columns of tables -->
     <include file="db.migration/update/2021-11-06/update-wm_tasks-table.xml"/>
-    <include file="db.migration/update/2021-11-06/update-wm_history_of_projects_changes-table.xml"/>
+    <include file="db.migration/update/2021-11-06/update-wm_developments-table.xml"/>
 
 <!--    Inserting values-->
     <include file="db.migration/update/2021-11-06/insert-default-values/wm_status.xml"/>

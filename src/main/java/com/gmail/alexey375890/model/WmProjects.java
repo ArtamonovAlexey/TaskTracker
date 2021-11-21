@@ -22,13 +22,23 @@ public class WmProjects {
     @JoinColumn(name = "A_CLIENT_COMPANY", referencedColumnName = "OUID", nullable = false)
     private WmCompanies company;
 
-    public WmProjects(String title, WmPeople author, WmCompanies company) {
+    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @JoinColumn(name = "A_STATUS", referencedColumnName = "OUID", nullable = false)
+    private WmStatus status;
+
+    public WmProjects(Long id, String title, WmPeople author, WmCompanies company, WmStatus status) {
+        this.id = id;
         this.title = title;
         this.author = author;
         this.company = company;
+        this.status = status;
     }
 
     public WmProjects() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -55,6 +65,14 @@ public class WmProjects {
         this.company = company;
     }
 
+    public WmStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(WmStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "WmProjects{" +
@@ -62,6 +80,7 @@ public class WmProjects {
                 ", title='" + title + '\'' +
                 ", author=" + author +
                 ", company=" + company +
+                ", status=" + status +
                 '}';
     }
 }
