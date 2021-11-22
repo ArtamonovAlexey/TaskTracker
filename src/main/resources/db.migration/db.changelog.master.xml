@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd" >
+
+<!--    Creating tables-->
+    <include file="db.migration/create/v-1.0.0-cumulative.xml"/>
+
+<!--    Updating tables-->
+    <include file="db.migration/update/2021-11-06/v-1.0.1-cumulative.xml"/>
+    <include file="db.migration/update/2021-11-13/v-1.0.2-cumulative.xml"/>
+    <include file="db.migration/update/2021-11-16/v-1.0.3-cumulative.xml"/>
+
+</databaseChangeLog>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2021-11-04-01-24" author="Artamonov Alexey">
+        <createTable tableName="WM_DEVELOPMENTS">
+
+            <column name="OUID" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="UPDATED" type="bigint">
+                <constraints foreignKeyName="WM_PEOPLE" references="WM_PEOPLE(OUID)"/>
+            </column>
+
+            <column name="UPDATE_TIME" type="character varying">
+                <constraints/>
+            </column>
+
+            <column name="A_TRACKER" type="bigint">
+                <constraints foreignKeyName="WM_TRACKER" references="WM_TRACKER(OUID)" nullable="false"/>
+            </column>
+
+            <column name="START_DATE" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="END_DATE" type="character varying">
+                <constraints/>
+            </column>
+
+            <column name="A_STATUS" type="bigint">
+                <constraints foreignKeyName="WM_STATUS" references="WM_STATUS(OUID)" nullable="false"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
