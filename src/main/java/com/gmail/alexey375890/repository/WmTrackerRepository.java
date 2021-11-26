@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface WmTrackerRepository extends JpaRepository<WmTracker, Long> {
 
@@ -25,4 +27,7 @@ public interface WmTrackerRepository extends JpaRepository<WmTracker, Long> {
 
     @Query("select wt from WmTracker wt where wt.id = 50")
     WmTracker getQa();
+
+    @Query("select wt from WmTracker wt")
+    List<WmTracker> findAllTrackers();
 }

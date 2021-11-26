@@ -74,4 +74,5 @@ public class WmCompaniesServiceImpl implements WmCompaniesService {
 
         return wmCompanies;
     }
+
 }

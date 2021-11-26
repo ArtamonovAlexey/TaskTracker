@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface WmStatusRepository extends JpaRepository<WmStatus, Long> {
 
@@ -25,4 +27,7 @@ public interface WmStatusRepository extends JpaRepository<WmStatus, Long> {
 
     @Query("select ws from WmStatus ws where ws.id = 120")
     WmStatus getNotActive();
+
+    @Query("select ws from WmStatus ws")
+    List<WmStatus> findAllStatuses();
 }

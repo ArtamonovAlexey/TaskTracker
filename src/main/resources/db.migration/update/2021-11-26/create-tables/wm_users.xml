@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2021-11-26-23-55" author="Artamonov Alexey">
+        <createTable tableName="WM_USERS">
+
+            <column name="OUID" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="A_PERSON" type="bigint">
+                <constraints foreignKeyName="WM_PEOPLE"
+                             references="WM_PEOPLE(OUID)"/>
+            </column>
+
+            <column name="AN_USERNAME" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="A_PASSWORD" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="A_ROLE" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="A_STATUS" type="character varying">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addUniqueConstraint tableName="WM_USERS" columnNames="AN_USERNAME"/>
+
+    </changeSet>
+</databaseChangeLog>

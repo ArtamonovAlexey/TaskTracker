@@ -67,8 +67,7 @@ public class WmCompaniesController {
     @DeleteMapping("/delete-by-id/{id}")
     public void deleteCompanyById(
             @Parameter(description = "Идентификатор сущестующей компании, которую хотим удалить")
-            @PathVariable Long id
-    ) {
+            @PathVariable Long id) {
         wmCompaniesService.delete(id);
     }
 
