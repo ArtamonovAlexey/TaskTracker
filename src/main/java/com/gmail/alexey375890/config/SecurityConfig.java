@@ -1,18 +1,16 @@
 package com.gmail.alexey375890.config;
 
 import com.gmail.alexey375890.enums.Permission;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.gmail.alexey375890.security.jwt.JwtConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -21,31 +19,52 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsService userDetailsService;
+//    private final UserDetailsService userDetailsService;
+//
+//    @Autowired
+//    public SecurityConfig(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
+//        this.userDetailsService = userDetailsService;
+//    }
 
-    @Autowired
-    public SecurityConfig(@Qualifier("userDetailsServiceImpl") UserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
+    private final JwtConfig jwtConfig;
+
+    public SecurityConfig(JwtConfig jwtConfig) {
+        this.jwtConfig = jwtConfig;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+//                .requestMatchers()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers(HttpMethod.POST, "/**").hasAuthority(Permission.DEVELOPERS_SAVE.getPermission())
-                .antMatchers(HttpMethod.PUT, "/**").hasAuthority(Permission.DEVELOPERS_UPDATE.getPermission())
-                .antMatchers(HttpMethod.GET, "/**").hasAuthority(Permission.DEVELOPERS_GET.getPermission())
-                .antMatchers(HttpMethod.DELETE, "/**").hasAuthority(Permission.DEVELOPERS_DELETE.getPermission())
-                .anyRequest().authenticated()
+                .antMatchers("/", "/swagger-resources/**", "/v2/api-docs/**", "/swagger-ui/**", "/auth/login").permitAll()
+
+
+
+//                .antMatchers().permitAll() // Для того, чтобы мог работать swagger
+//                .antMatchers().permitAll() // Для того, чтобы мог работать swagger
+////                .antMatchers("/v2/api-docs", "/swagger-ui.html", "/webjars/**", "/swagger-resources/**").anonymous()
+//                .antMatchers().permitAll()
+
+//                .antMatchers().permitAll()
+                .antMatchers(HttpMethod.POST, "/task-tracker/companies/**").hasAuthority(Permission.DEVELOPERS_SAVE.getPermission())
+                .antMatchers(HttpMethod.PUT, "/task-tracker/companies/**").hasAuthority(Permission.DEVELOPERS_UPDATE.getPermission())
+                .antMatchers(HttpMethod.GET, "/task-tracker/companies/**").hasAuthority(Permission.DEVELOPERS_GET.getPermission())
+                .antMatchers(HttpMethod.DELETE, "/task-tracker/companies/**").hasAuthority(Permission.DEVELOPERS_DELETE.getPermission())
+                .anyRequest()
+                .authenticated()
                 .and()
-                .formLogin()
-                .and()
-                .logout()
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .deleteCookies("JSESSIONID");
+                .apply(jwtConfig);
+//                .and()
+//                .formLogin()
+//                .and()
+//                .logout()
+//                .invalidateHttpSession(true)
+//                .clearAuthentication(true)
+//                .deleteCookies("JSESSIONID");
     }
 
 //    @Bean
@@ -80,9 +99,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        );
 //    }
 
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.authenticationProvider(daoAuthenticationProvider());
+//    }
+
+    @Bean
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 
     @Bean
@@ -90,15 +115,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder(12);
     }
 
-    @Bean
-    protected DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-
-        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
-
-        return daoAuthenticationProvider;
-    }
+//    @Bean
+//    protected DaoAuthenticationProvider daoAuthenticationProvider() {
+//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+//
+//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//
+//        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
+//
+//        return daoAuthenticationProvider;
+//    }
 
 }
