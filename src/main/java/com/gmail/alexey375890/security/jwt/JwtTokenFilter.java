@@ -40,8 +40,6 @@ public class JwtTokenFilter extends GenericFilterBean {
 
             ((HttpServletResponse) servletResponse).sendError(e.getHttpStatus().value());
 
-            System.out.println(token);
-
             throw new JwtAuthenticationException("JWT token is expired or invalid");
         }
 

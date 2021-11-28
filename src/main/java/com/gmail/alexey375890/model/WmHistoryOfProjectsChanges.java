@@ -15,10 +15,6 @@ public class WmHistoryOfProjectsChanges {
     @JoinColumn(name = "A_NUMBER", referencedColumnName = "OUID", nullable = false)
     private WmProjects number;
 
-//    @OneToMany(cascade = {CascadeType.PERSIST})
-//    @JoinColumn(name = "A_DEVELOP", referencedColumnName = "OUID")
-//    private List<WmDevelopments> develop;
-
     @Column(name = "START_DATE", nullable = false)
     private String startDate;
 
@@ -38,13 +34,11 @@ public class WmHistoryOfProjectsChanges {
     private WmStatus status;
 
     public WmHistoryOfProjectsChanges(Long id, WmProjects number,
-//                                      List<WmDevelopments> develop,
                                       String startDate, String endDate, WmPeople responCompany,
                                       WmPeople responOfClientCompany, WmStatus status) {
 
         this.id = id;
         this.number = number;
-//        this.develop = develop;
         this.startDate = startDate;
         this.endDate = endDate;
         this.responCompany = responCompany;
@@ -66,14 +60,6 @@ public class WmHistoryOfProjectsChanges {
     public void setNumber(WmProjects number) {
         this.number = number;
     }
-//
-//    public List<WmDevelopments> getDevelop() {
-//        return develop;
-//    }
-//
-//    public void setDevelop(List<WmDevelopments> develop) {
-//        this.develop = develop;
-//    }
 
     public String getStartDate() {
         return startDate;
@@ -120,7 +106,6 @@ public class WmHistoryOfProjectsChanges {
         return "WmHistoryOfProjectsChanges{" +
                 "id=" + id +
                 ", number=" + number +
-//                ", develop=" + develop +
                 ", startDate='" + startDate + '\'' +
                 ", endDate='" + endDate + '\'' +
                 ", responCompany=" + responCompany +
